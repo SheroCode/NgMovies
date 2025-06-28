@@ -1,0 +1,8 @@
+@use "../../../styles.scss" as *;
+.navbar {
+  background-color: $main;
+  select {
+    border: none;
+    border-radius: .25rem;
+  }
+}
