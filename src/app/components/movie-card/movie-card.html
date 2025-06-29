@@ -1,0 +1,11 @@
+<div class="card border-0">
+  <img [src]=" imageUrl()" class="card-img-top rounded-5" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{movie()?.title}}</h5>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="card-text text-muted mb-0 fs-5">{{movie()?.release_date}}</p>
+      <i class="bi bi-heart fs-3"></i>
+      <i class="bi bi-heart-fill heart fs-3"></i>
+    </div>
+  </div>
+</div>
