@@ -2,3 +2,11 @@
 .bi-heart-fill {
   color: $main;
 }
+.movie__image {
+  position: relative;
+  app-circular-progress {
+    position: absolute;
+    top: 90%;
+    left: -3%;
+  }
+}

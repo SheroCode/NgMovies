@@ -1,10 +1,11 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { MovieResults } from '../../interfaces/interfaces';
 import { WishlistService } from '../../services/wishlist-service';
+import { CircularProgress } from '../circular-progress/circular-progress';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [],
+  imports: [CircularProgress],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.scss',
 })

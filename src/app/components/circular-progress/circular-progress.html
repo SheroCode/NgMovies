@@ -1,0 +1,53 @@
+<svg
+  [attr.width]="size()"
+  [attr.height]="size()"
+  [attr.viewBox]="'0 0 ' + size() + ' ' + size()"
+  class="circular-chart"
+>
+  <!-- background ring -->
+  <circle
+    class="circle-bg"
+    [attr.cx]="center()"
+    [attr.cy]="center()"
+    [attr.r]="radius()"
+    fill="none"
+    stroke="#222"
+    [attr.stroke-width]="strokeWidth()"
+  />
+
+  <!-- colored progress ring -->
+  <circle
+    class="circle"
+    [attr.cx]="center()"
+    [attr.cy]="center()"
+    [attr.r]="radius()"
+    fill="rgba(0, 0, 0, 0.6)"
+    [attr.stroke]="strokeColor()"
+    [attr.stroke-width]="strokeWidth()"
+    [attr.stroke-dasharray]="circumference()"
+    [attr.stroke-dashoffset]="offset()"
+    stroke-linecap="round"
+  />
+
+  <!-- transparent black background circle for text -->
+  <circle
+    class="circle-text-bg"
+    [attr.cx]="center()"
+    [attr.cy]="center()"
+    [attr.r]="radius() - 10"
+    fill="none"
+    stroke="none"
+  ></circle>
+
+  <!-- percentage text -->
+  <text
+    [attr.x]="center()"
+    [attr.y]="center() + 4"
+    text-anchor="middle"
+    fill="#fff"
+    font-size="12"
+    font-weight="bold"
+  >
+    {{ roundedValue() }}%
+  </text>
+</svg>
