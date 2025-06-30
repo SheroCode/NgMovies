@@ -1,11 +1,12 @@
 @use "../../../styles.scss" as *;
 .navbar {
-  background-color: $main;
+
+ background-color: $main;
   select {
     border: none;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
-  .counter{
+  .counter {
     width: 25px;
     height: 25px;
     border-radius: 50%;

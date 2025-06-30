@@ -1,0 +1,45 @@
+@if (isLoading()) {
+<p class="text-center text-warning py-5">Loading movie details...</p>
+} @else { @if (movie()) {
+<div class="container py-5">
+  <div class="row g-4 align-items-center shadow rounded-5 p-3">
+    <div class="col-md-4">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path"
+        [alt]="movie()?.title"
+        class="img-fluid rounded-3 shadow"
+      />
+    </div>
+    <div class="col-md-8">
+      <h2 class="fw-bold">{{ movie()?.title }}</h2>
+      <p class="text-muted">{{ movie()?.release_date }}</p>
+
+      <ngbd-rating-decimal
+        [rating]="(movie()?.vote_average ?? 0) / 2"
+      ></ngbd-rating-decimal>
+
+      <p>{{ movie()?.overview }}</p>
+
+      @for(genre of movie()?.genres;track genre.id){
+      <span class="me-3 fw-semibold">{{genre.name}}</span>
+      }
+      <div class="d-flex mt-4">
+        <p class="">
+          <strong>Duration :</strong> {{ movie()?.runtime }} minutes
+        </p>
+        <p class="ms-5">
+          <strong>Languages :</strong> {{
+          movie()?.spoken_languages?.[0]?.english_name }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+} @else {
+<p class="text-center text-danger py-5">{{ error() }}</p>
+} }
+
+
+
+<!-- recommended movies -->
+ <app-recommended-movies></app-recommended-movies>

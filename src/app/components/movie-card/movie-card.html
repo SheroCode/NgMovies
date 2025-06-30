@@ -1,22 +1,22 @@
 <div class="card border-0">
-  <div class="movie__image">
-    <img [src]=" imageUrl()" class="card-img-top rounded-5 " alt="..." />
-    <app-circular-progress
-      [value]="(movie()?.vote_average ?? 0) * 10"
-      [size]="50"
-      [strokeWidth]="6"
-    />
-  </div>
-
+  <a [routerLink]="['/movie', movie()?.id]" class="text-decoration-none">
+    <div class="movie__image">
+      <img [src]="imageUrl()" class="card-img-top rounded-5" alt="..." />
+      <app-circular-progress
+        [value]="(movie()?.vote_average ?? 0) * 10"
+        [size]="50"
+        [strokeWidth]="6"
+      />
+    </div>
+  </a>
   <div class="card-body mt-4">
     <h6 class="card-title fs-5">{{movie()?.title}}</h6>
     <div class="d-flex justify-content-between align-items-center">
       <p class="card-text text-muted mb-0">{{movie()?.release_date}}</p>
-
       <i
         class="bi fs-3"
-        [class.bi-heart-fill]="isInWishlist(movie()!)"
-        [class.bi-heart]="!isInWishlist(movie()!)"
+        [class.bi-suit-heart-fill]="isInWishlist(movie()!)"
+        [class.bi-suit-heart]="!isInWishlist(movie()!)"
         (click)="toggleWishlist($event,movie()!)"
         style="cursor: pointer"
       ></i>

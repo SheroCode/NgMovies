@@ -12,4 +12,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/wishlist/wishlist').then((m) => m.Wishlist),
   },
+  {
+    path: 'movie/:id',
+    loadComponent: () =>
+      import('./components/movie-details/movie-details').then(
+        (m) => m.MovieDetails
+      ),
+  },
 ];
