@@ -14,3 +14,6 @@ export interface MovieResults {
   vote_average: number;
   vote_count: number;
 }
+export interface NowPlayingResponse {
+  results: MovieResults[];
+}

@@ -1,4 +1,4 @@
-import { Component, inject, OnChanges, OnInit, effect } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieService } from '../../services/movie-service';
 
@@ -18,7 +18,6 @@ export class Pagination {
     this._page = value;
     this.movieService.setCurrentPage(value);
   }
-
   constructor() {
     effect(() => {
       this.movieService.loadNowPlaying();

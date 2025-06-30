@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map } from 'rxjs';
-import { MovieResults } from '../interfaces/interfaces';
+import { MovieResults , NowPlayingResponse } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -24,19 +24,18 @@ export class MovieService {
   setCurrentPage(page: number) {
     this.currentPage.set(page);
   }
-
+  
   loadNowPlaying() {
     this.isLoading.set(true);
     this.error.set(null);
-
     this.http
-      .get(
+      .get<NowPlayingResponse>(
         `${this.BASE_URL}/movie/now_playing?language=en-US&page=${this.currentPage()}`,
         {
           headers: this.headers,
         }
       )
-      .pipe(map((res: any) => res.results))
+      .pipe(map((res) => res.results))
       .subscribe({
         next: (movies) => {
           this.nowPlaying.set(movies);
