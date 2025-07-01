@@ -1,0 +1,24 @@
+.carousel-wrapper {
+  position: relative;
+
+  ::ng-deep .carousel-control-prev,
+  ::ng-deep .carousel-control-next {
+    background-color: black;
+    width:3rem;
+    height: 5rem;
+    border-radius: 50%;
+    top: 15rem;
+    // transform: translateY(-50%);
+    position: absolute;
+    z-index: 2;
+  }
+
+  ::ng-deep .carousel-control-prev {
+    left: 0;
+  }
+
+  ::ng-deep .carousel-control-next {
+    right: 0;
+  }
+}
+

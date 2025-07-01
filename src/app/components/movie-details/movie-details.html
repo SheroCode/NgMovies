@@ -19,11 +19,14 @@
       ></ngbd-rating-decimal>
 
       <p>{{ movie()?.overview }}</p>
-
-      @for(genre of movie()?.genres;track genre.id){
-      <span class="me-3 fw-semibold">{{genre.name}}</span>
-      }
-      <div class="d-flex mt-4">
+      <div class="d-flex flex-wrap ">
+        @for(genre of movie()?.genres;track genre.id){
+       
+          <span class="fw-semibold me-2 mb-2">{{genre.name}}</span>
+        
+        }
+      </div>
+      <div class="d-flex mt-4 ">
         <p class="">
           <strong>Duration :</strong> {{ movie()?.runtime }} minutes
         </p>
@@ -39,7 +42,7 @@
 <p class="text-center text-danger py-5">{{ error() }}</p>
 } }
 
-
-
 <!-- recommended movies -->
- <app-recommended-movies></app-recommended-movies>
+<hr />
+
+<app-recommended-movies [movieId]="movie()?.id" />
