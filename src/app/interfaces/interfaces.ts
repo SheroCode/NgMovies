@@ -1,4 +1,4 @@
-//playing now movies
+//Playing now movies
 export interface MovieResults {
   adult: boolean;
   backdrop_path: string;
@@ -19,12 +19,11 @@ export interface NowPlayingResponse {
   results: MovieResults[];
 }
 
-//movie details
+// Movie details
 export interface Genre {
   id: number;
   name: string;
 }
-
 export interface ProductionCompany {
   id: number;
   logo_path: string | null;
@@ -70,4 +69,18 @@ export interface MovieDetailsFace {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+//Review
+export interface ReviewFace {
+  id: string;
+  author: string;
+  content: string;
+  created_at: string;
+  author_details: {
+    name: string;
+    username: string;
+    avatar_path: string;
+    rating: number | null;
+  };
 }
