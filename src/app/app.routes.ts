@@ -19,4 +19,9 @@ export const routes: Routes = [
         (m) => m.MovieDetails
       ),
   },
+    {
+    path: '**',
+    loadComponent: () =>
+      import('./components/not-found/not-found').then((m) => m.NotFound),
+  },
 ];

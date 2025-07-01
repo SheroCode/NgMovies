@@ -2,26 +2,18 @@
   <h3 class="mb-4">Recommended Movies</h3>
 
   @if (isLoading()) {
-  <p class="text-warning">Loading recommendations...</p>
+    <p class="text-warning">Loading recommendations...</p>
   } @else if (error()) {
-  <p class="text-danger">{{ error() }}</p>
+    <p class="text-danger">{{ error() }}</p>
   } @else if (recommended().length === 0) {
-  <p class="text-muted">No recommendations available.</p>
+    <p class="text-muted">No recommendations available.</p>
   } @else {
-  <div class="carousel-wrapper">
-    <ngb-carousel [interval]="0" [pauseOnHover]="true">
-      @for (chunk of chunkedRecommended(); track chunk[0].id) {
-      <ng-template ngbSlide>
-        <div class="row gx-5 mx-auto text-center justify-content-around">
-          @for (movie of chunk; track movie.id) {
-          <div class="col-6 col-md-3">
-            <app-movie-card [movie]="movie" />
-          </div>
-          }
+    <div class="row gx-4 gy-5 justify-content-center">
+      @for (movie of recommended(); track movie.id) {
+        <div class="col-6 col-md-4 col-lg-3">
+          <app-movie-card [movie]="movie" />
         </div>
-      </ng-template>
       }
-    </ngb-carousel>
-  </div>
+    </div>
   }
 </section>

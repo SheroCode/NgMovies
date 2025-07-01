@@ -1,40 +1,62 @@
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/">NgMovies</a>
+<nav class="navbar navbar-expand-lg fixed-top ">
+  <div class="container ">
+    <a class="navbar-brand" [routerLink]="'/'">NgMovies</a>
+
+    <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      (click)="isMenuCollapsed = !isMenuCollapsed"
     >
-      <span class="navbar-toggler-icon"></span>
+      &#9776;
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+
+    <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <ul class="navbar-nav align-items-center w-100">
+        <li class="nav-item active">
+          <!-- Step 4: Close the menu when a link is clicked. -->
+          <a
+            class="nav-link"
+            [routerLink]="'/'"
+            (click)="isMenuCollapsed = true"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item active">
+          <!-- Step 4: Close the menu when a link is clicked. -->
+          <a
+            class="nav-link"
+            [routerLink]="''"
+            (click)="isMenuCollapsed = true"
+            >Movies</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#movies">Movies</a>
+          <a
+            class="nav-link"
+            [routerLink]="'.'"
+            (click)="isMenuCollapsed = true"
+            >TV shows</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link">TV shows</a>
+        <li class="nav-item d-flex align-items-center">
+          <a
+            class="nav-link"
+            [routerLink]="'/wishlist'"
+            (click)="isMenuCollapsed = true"
+          >
+            <i class="bi bi-suit-heart-fill fs-4"></i>
+          </a>
+          <span class="counter">{{counter()}}</span>
+        </li>
+        <li class="nav-item d-flex align-items-center ms-auto">
+          <select class="form-select form-select-sm" name="" id="">
+            <option selected value="English">English</option>
+            <option value="Arabic">Arabic</option>
+          </select>
         </li>
       </ul>
-      <div class="d-flex gap-3 align-items-center">
-        <select class="form-select form-select-sm" name="" id="">
-          <option selected value="English">English</option>
-          <option value="Arabic">Arabic</option>
-        </select>
-        <div class="d-flex gap-2 align-items-center nav-item">
-          <i class="bi bi-suit-heart-fill fs-4"></i>
-          <a class="nav-link" routerLink="/wishlist">Watchlist</a>
-          <span class="counter">{{counter()}}</span>
-        </div>
-      </div>
     </div>
   </div>
 </nav>

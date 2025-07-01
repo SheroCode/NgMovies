@@ -1,0 +1,13 @@
+@use "../../../styles.scss" as*;
+
+:host {
+  background-color: #f8f9fa;
+}
+
+i{
+  font-size: 15rem;
+  color:#D1D1D1;
+}
+.btn{
+  background-color: $main;
+}
