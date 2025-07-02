@@ -1,4 +1,4 @@
-<div class="landing">
+<div class="landing" id="home">
   <div class="landing__content rounded-3">
     <div class="container">
       <!-- first section -->
@@ -11,8 +11,9 @@
             class="form-control me-2"
             type="search"
             placeholder="Search and Explore...."
+            [(ngModel)]="movieName"
           />
-          <button class="btn">Search</button>
+          <a [routerLink]="['/search', movieName]" class="btn">Search</a>
         </div>
       </div>
     </div>
@@ -41,7 +42,7 @@
       }@else {
       <div class="row g-4">
         @for(movie of nowPlaying(); track movie.id) {
-        <div class="col-8 col-lg-3 col-md-4 col-sm-6 mx-auto ">
+        <div class="col-8 col-lg-3 col-md-4 col-sm-6 mx-auto">
           <app-movie-card [movie]="movie"></app-movie-card>
         </div>
         }

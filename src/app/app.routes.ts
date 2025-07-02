@@ -19,6 +19,13 @@ export const routes: Routes = [
         (m) => m.MovieDetails
       ),
   },
+  {
+    path: 'search/:query',
+    loadComponent: () =>
+      import('./components/search/search').then(
+        (m) => m.Search
+      ),
+  },
     {
     path: '**',
     loadComponent: () =>

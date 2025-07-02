@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ViewEncapsulation, inject, OnInit } from '@angular/core';
+import { RouterOutlet, ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { Navbar } from './components/navbar/navbar';
 
 @Component({
@@ -9,6 +10,19 @@ import { Navbar } from './components/navbar/navbar';
   styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class App {
+export class App implements OnInit {
   protected title = 'NgMovies';
+
+  private route = inject(ActivatedRoute);
+  private viewportScroller = inject(ViewportScroller);
+
+  ngOnInit(): void {
+    this.route.fragment.subscribe((fragment) => {
+      if (fragment) {
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(fragment);
+        }, 0);
+      }
+    });
+  }
 }

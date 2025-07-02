@@ -7,7 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
-    padding: 20rem 3rem;
+    padding: 20rem 2rem;
     .overlay {
       position: absolute;
       width: 100%;
@@ -17,15 +17,22 @@
       left: 0;
     }
     .landing__text {
-      position: relative;
-      z-index: 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
 
-      .btn {
-        background-color: $main;
-      }
-    }
+  @media (min-width: 992px) {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  /* From Uiverse.io by abrahamcalsin */
+
+  .btn {
+    background-color: $main;
+  }
+}
+  }
+  /* From Uiverse.io loader */
   .dot-spinner {
     --uib-size: 2.8rem;
     --uib-speed: 0.9s;

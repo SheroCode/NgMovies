@@ -20,7 +20,7 @@ export class DetailsService {
   isLoading = signal(false);
   error = signal<string | null>(null);
   // Reviews Signals
-  reviews = signal<ReviewFace[] >([]);
+  reviews = signal<ReviewFace[]>([]);
   isLoadingReviews = signal(false);
   reviewsError = signal<string | null>(null);
 

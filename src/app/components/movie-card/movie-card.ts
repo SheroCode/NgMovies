@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 export class MovieCard {
   movie = input<MovieResults>();
   imageUrl = computed(
-    () => 'https://image.tmdb.org/t/p/w500' + this.movie()?.poster_path
+    () => 'https://image.tmdb.org/t/p/w500' + this.movie()?.poster_path ||this.movie()?.backdrop_path
   );
   wishlistService = inject(WishlistService);
 

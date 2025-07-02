@@ -1,0 +1,29 @@
+<div class="container  mx-auto">
+  <div class="d-flex search-input mb-5">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search and Explore...."
+      [(ngModel)]="movieName"
+    />
+    <a class="btn" (click)="onSearch()">Search</a>
+  </div>
+  @if (isLoadingSearch()) {
+  <p>Loading search results...</p>
+
+  } @else if (searchError()) {
+  <p class="text-danger">Error: {{ searchError() }}</p>
+
+  } @else if (hasSearched() && searchResults().length === 0) {
+  <p class="text-muted">No movies found for "{{ movieName }}"</p>
+
+  } @else if (hasSearched()) {
+  <div class="row g-4">
+    @for (movie of searchResults(); track movie.id) {
+    <div class="col-8 col-lg-3 col-md-4 col-sm-6 mx-auto">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </div>
+    }
+  </div>
+  }
+</div>
