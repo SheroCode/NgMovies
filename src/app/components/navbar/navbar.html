@@ -20,13 +20,18 @@
             class="nav-link"
             [routerLink]="'/'"
             (click)="isMenuCollapsed = true"
-            fragment="home" >Home</a
+            fragment="home"
+            >Home</a
           >
         </li>
         <li class="nav-item active">
           <!-- Step 4: Close the menu when a link is clicked. -->
-          <a class="nav-link" [routerLink]="'/'" (click)="isMenuCollapsed = true"
-           fragment="movies">Movies</a
+          <a
+            class="nav-link"
+            [routerLink]="'/'"
+            (click)="isMenuCollapsed = true"
+            fragment="movies"
+            >Movies</a
           >
         </li>
         <li class="nav-item">
@@ -49,9 +54,14 @@
           }
         </li>
         <li class="nav-item d-flex align-items-center ms-auto">
-          <select class="form-select form-select-sm" name="" id="">
-            <option selected value="English">English</option>
-            <option value="Arabic">Arabic</option>
+          <select
+            class="form-select form-select-sm"
+            [value]="selectedLanguage"
+            (change)="onLanguageChange($event)"
+          >
+            @for (lang of languages ;track lang) {
+            <option [value]="lang.code">{{ lang.label }}</option>
+            }
           </select>
         </li>
       </ul>

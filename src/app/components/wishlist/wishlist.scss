@@ -1,7 +1,7 @@
 @use "../../../styles.scss" as *;
 
-.container{
-  margin: 10rem 0;
+.container {
+  margin-top: 5rem ;
 }
 h2 {
   margin-top: 5rem;
@@ -15,7 +15,8 @@ h2 {
     background-color: $main;
   }
 }
-/* From Uiverse.io by vinodjangid07 */
+
+/* Trash button remove item */
 .button {
   width: 50px;
   height: 50px;
@@ -72,7 +73,7 @@ h2 {
   transition-duration: 0.7s;
 }
 
-/* From Uiverse.io by vinodjangid07 */
+/* Trash button clear wish list */
 .bin-button {
   display: flex;
   flex-direction: column;
