@@ -7,6 +7,19 @@
     border: none;
     border-radius: 0.25rem;
   }
+
+    .logo-wrapper {
+    width: 10rem;
+    img {
+      width: 100%;
+    }
+  }
+
+.nav-link{
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
   // Wishlist icon and counter styling
   .wishlist{
     position: relative;
@@ -20,7 +33,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background-color:red;
+      background-color:#de0a26;
       text-align: center;
       color: #ffff;
     }

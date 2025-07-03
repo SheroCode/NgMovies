@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="'/'">NgMovies</a>
+    <a class="navbar-brand logo-wrapper" [routerLink]="'/'"
+      ><img class="logo-image" src="../../../logo.png" alt=""
+    /></a>
 
     <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
     <button
@@ -43,13 +45,13 @@
           >
         </li>
 
-
         <!-- wishlist  -->
-        <li class="nav-item d-flex wishlist ">
+        <li class="nav-item d-flex wishlist">
           <a
             class="nav-link"
             [routerLink]="'/wishlist'"
-            (click)="isMenuCollapsed = true">
+            (click)="isMenuCollapsed = true"
+          >
             <i class="bi bi-suit-heart-fill"></i>
           </a>
           @if(counter()> 0){ <span class="counter">{{counter()}}</span>
