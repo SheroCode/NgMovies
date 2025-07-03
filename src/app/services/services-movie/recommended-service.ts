@@ -21,6 +21,7 @@ export class RecommendedService {
   isLoading = signal(false);
   error = signal<string | null>(null);
 
+  // Load recommended movies for a given movie ID
   load(movieId: number) {
     this.isLoading.set(true);
     this.error.set(null);

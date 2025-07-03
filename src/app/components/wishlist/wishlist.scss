@@ -1,22 +1,29 @@
 @use "../../../styles.scss" as *;
 
+// Container spacing
 .container {
-  margin-top: 5rem ;
+  margin-top: 5rem;
 }
+// Heading spacing
 h2 {
   margin-top: 5rem;
 }
+// Empty wishlist message styling
 .heartbreak {
   margin: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  i {
+    font-size: 12rem;
+    color: #d1d1d1;
+  }
   .btn {
     background-color: $main;
   }
 }
 
-/* Trash button remove item */
+/* Trash button to clear all items */
 .button {
   width: 50px;
   height: 50px;
@@ -57,6 +64,7 @@ h2 {
   transform: translateY(60%);
 }
 
+// Tooltip for clear button
 .button::before {
   position: absolute;
   top: -20px;
@@ -73,7 +81,7 @@ h2 {
   transition-duration: 0.7s;
 }
 
-/* Trash button clear wish list */
+/* Trash button to remove single item */
 .bin-button {
   display: flex;
   flex-direction: column;
@@ -108,6 +116,7 @@ h2 {
 .bin-button:active {
   transform: scale(0.9);
 }
+// Garbage animation for bin
 .garbage {
   position: absolute;
   width: 14px;

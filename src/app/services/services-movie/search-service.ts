@@ -16,19 +16,22 @@ export class SearchService {
     Authorization: `Bearer ${this.TOKEN}`,
   });
 
-  // Search Signals
+  // Signals for search results and loading/error state
   searchResults = signal<MovieResults[]>([]);
   isLoadingSearch = signal(false);
   searchError = signal<string | null>(null);
 
-  // Search by MovieName
+  // Search movies by name
   searchMovies(movieName: string) {
     this.isLoadingSearch.set(true);
     this.searchError.set(null);
     this.http
-      .get<{results:MovieResults[]}>(`${this.BASE_URL}/search/movie?include_adult=false&query=${movieName}`, {
-        headers: this.headers,
-      })
+      .get<{ results: MovieResults[] }>(
+        `${this.BASE_URL}/search/movie?include_adult=false&query=${movieName}`,
+        {
+          headers: this.headers,
+        }
+      )
       .pipe(map((res) => res.results))
       .subscribe({
         next: (movies) => {

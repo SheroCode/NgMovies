@@ -1,7 +1,9 @@
 <div class="card border-0">
+  <!-- Link to TV show details -->
   <a [routerLink]="['/tvShow', tvShow()?.id]" class="text-decoration-none">
     <div class="movie__image">
       <img [src]="imageUrl()" class="card-img-top rounded-5" alt="..." />
+      <!-- Circular progress for TV show rating -->
       <app-circular-progress
         [value]="(tvShow()?.vote_average ?? 0) * 10"
         [size]="50"
@@ -13,7 +15,6 @@
     <h6 class="card-title fs-lg-5 ">{{tvShow()?.name}}</h6>
     <div class="d-flex justify-content-between align-items-center">
       <p class="card-text text-muted mb-0">{{tvShow()?.first_air_date}}</p>
-   
     </div>
   </div>
 </div>

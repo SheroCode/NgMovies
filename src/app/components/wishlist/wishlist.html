@@ -1,24 +1,15 @@
 <div class="container mx-auto">
   <h2 class="mb-5">Watch list</h2>
+  <!-- Show message if wishlist is empty -->
   @if(wishlist().length==0){
   <div class="heartbreak">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
-      fill="#D1D1D1"
-      class="bi bi-heartbreak-fill"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586M7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77"
-      />
-    </svg>
+    <i class="bi bi-heartbreak-fill"></i>
     <p>No Movies in watch list</p>
     <button class="btn w-lg-25" routerLink="/home">Back to home</button>
   </div>
-
-  } @else { @for(movie of wishlist();track movie.id){
+  } @else { 
+  <!-- List all movies in wishlist -->
+  @for(movie of wishlist();track movie.id){
   <div class="card mb-5 border-0 shadow-lg py-4 rounded-5">
     <div class="row align-items-center">
       <div class="col-lg-3 col-md-6 mx-auto text-center">
@@ -39,6 +30,7 @@
       </div>
 
       <div class="col-lg-2">
+        <!-- Remove single movie button -->
         <button class="bin-button mx-auto" (click)="removeMovie(movie)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -91,6 +83,8 @@
     </div>
   </div>
   }
+  
+  <!-- Button to clear all wishlist -->
   <button class="button mx-auto" (click)="clearWishlist()">
     <svg viewBox="0 0 448 512" class="svgIcon">
       <path

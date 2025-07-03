@@ -11,11 +11,15 @@ import { MovieService } from '../../services/services-movie/movie-service';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  // Access wishlist and movie services
   wishlistService = inject(WishlistService);
   movieService = inject(MovieService);
 
+  // Wishlist counter signal
   counter = this.wishlistService.counter;
   isMenuCollapsed = true;
+
+  // Supported languages for selection
   languages = [
     { code: 'en', label: 'English' },
     { code: 'ar', label: 'Arabic' },
@@ -23,8 +27,10 @@ export class Navbar {
     { code: 'zh', label: 'Chinese' },
   ];
 
+  // Currently selected language
   selectedLanguage = this.movieService.language();
 
+  // Handle language change and update direction
   onLanguageChange(event: Event) {
     const lang = (event.target as HTMLSelectElement).value;
     this.selectedLanguage = lang;

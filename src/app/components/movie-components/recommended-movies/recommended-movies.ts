@@ -13,12 +13,15 @@ import { RecommendedService } from '../../../services/services-movie/recommended
 export class RecommendedMovies {
   private service = inject(RecommendedService);
 
+  // Movie ID input for fetching recommendations
   movieId = input<number>();
 
+  // Signals for recommended movies and loading/error state
   recommended = this.service.recommended;
   isLoading = this.service.isLoading;
   error = this.service.error;
-  // Computed signal to chunk movies into groups of 4 per slide
+
+  // Chunk recommended movies into groups of 3 for carousel slides
   chunkedRecommended = computed(() => {
     const items = this.recommended();
     const chunks: MovieResults[][] = [];
@@ -27,7 +30,9 @@ export class RecommendedMovies {
     }
     return chunks;
   });
+
   constructor() {
+    // Load recommendations when movieId changes
     effect(() => {
       const id = this.movieId();
       if (id) this.service.load(id);

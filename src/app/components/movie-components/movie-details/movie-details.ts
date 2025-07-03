@@ -1,9 +1,9 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgbdRatingDecimal } from '../../rating-decimal/rating-decimal';
-import { RecommendedMovies } from '../recommended-movies/recommended-movies';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsService } from '../../../services/services-movie/details-service';
+import { NgbdRatingDecimal } from '../../rating-decimal/rating-decimal';
+import { RecommendedMovies } from '../recommended-movies/recommended-movies';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,31 +13,34 @@ import { DetailsService } from '../../../services/services-movie/details-service
   imports: [NgbdRatingDecimal, RecommendedMovies, NgbAccordionModule],
 })
 export class MovieDetails {
+  // Inject route and details service
   private route = inject(ActivatedRoute);
   private detailsService = inject(DetailsService);
 
-  // signal for route param
-  id = computed(() => {
-    const id = this.route.snapshot.paramMap.get('id');
-    return id ? +id : 0;
-  });
-
-  // signals from service for movie details
+  // Movie details and loading/error states
   movie = this.detailsService.movieDetails;
   isLoading = this.detailsService.isLoading;
   error = this.detailsService.error;
-  // signals from service for movie reviews
+
+  // Reviews and their loading/error states
   reviews = this.detailsService.reviews;
   isLoadingReviews = this.detailsService.isLoadingReviews;
   reviewsError = this.detailsService.reviewsError;
 
   constructor() {
+    // Load movie details and reviews when route param changes
     effect(() => {
-      const movieId = this.id();
-      if (movieId) {
-        this.detailsService.loadMovieDetails(movieId);
-        this.detailsService.loadReviews(movieId);
-      }
+      this.route.params.subscribe((params) => {
+        const movieId = +params['id'];
+        if (movieId) {
+          this.detailsService.loadMovieDetails(movieId);
+          this.detailsService.loadReviews(movieId);
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }
+      });
     });
   }
 }

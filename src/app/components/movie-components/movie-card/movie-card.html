@@ -1,7 +1,9 @@
 <div class="card border-0">
+  <!-- Link to movie details -->
   <a [routerLink]="['/movie', movie()?.id]" class="text-decoration-none">
     <div class="movie__image">
       <img [src]="imageUrl()" class="card-img-top rounded-5" alt="..." />
+      <!-- Circular progress for movie rating -->
       <app-circular-progress
         [value]="(movie()?.vote_average ?? 0) * 10"
         [size]="50"
@@ -9,10 +11,11 @@
       />
     </div>
   </a>
-  <div class="card-body  mt-4">
-    <h6 class="card-title fs-lg-5 ">{{movie()?.title}}</h6>
+  <div class="card-body mt-4">
+    <h6 class="card-title fs-lg-5 text-truncate">{{movie()?.title}}</h6>
     <div class="d-flex justify-content-between align-items-center">
-      <p class="card-text text-muted mb-0">{{movie()?.release_date}}</p>
+      <p class="card-text text-muted mb-0 ">{{movie()?.release_date}}</p>
+      <!-- Wishlist heart icon (filled if in wishlist) -->
       <i
         class="bi fs-3"
         [class.bi-suit-heart-fill]="isInWishlist(movie()!)"

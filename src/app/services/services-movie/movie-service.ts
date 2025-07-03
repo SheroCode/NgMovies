@@ -17,22 +17,26 @@ export class MovieService {
     Authorization: `Bearer ${this.TOKEN}`,
   });
 
+  // Signals for movie data and UI state
   nowPlaying = signal<MovieResults[]>([]);
   isLoading = signal(false);
   currentPage = signal<number>(1);
   error = signal<string | null>(null);
   language = signal('en');
 
+  // Set current page and reload movies
   setCurrentPage(page: number) {
     this.currentPage.set(page);
     this.loadNowPlaying();
   }
 
+  // Set language and reload movies
   setLanguage(lang: string) {
     this.language.set(lang);
     this.loadNowPlaying();
   }
 
+  // Fetch now playing movies from API
   loadNowPlaying() {
     this.isLoading.set(true);
     this.error.set(null);

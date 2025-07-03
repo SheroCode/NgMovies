@@ -44,6 +44,7 @@ export class DetailsService {
         },
       });
   }
+
   // Load Reviews by Movie ID
   loadReviews(id: number) {
     this.isLoadingReviews.set(true);

@@ -21,6 +21,10 @@ export class Pagination {
   constructor() {
     effect(() => {
       this.movieService.loadNowPlaying();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     });
   }
 }

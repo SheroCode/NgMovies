@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { WishlistService } from '../../services/wishlist-service';
 import { RouterModule } from '@angular/router';
 import { MovieResults } from '../../interfaces/interfaces';
-import { NgbdRatingDecimal } from "../rating-decimal/rating-decimal";
+import { NgbdRatingDecimal } from '../rating-decimal/rating-decimal';
 
 @Component({
   selector: 'app-wishlist',
@@ -11,12 +11,17 @@ import { NgbdRatingDecimal } from "../rating-decimal/rating-decimal";
   styleUrl: './wishlist.scss',
 })
 export class Wishlist {
+  // Access wishlist service
   wishlistService = inject(WishlistService);
+  // Signal for wishlist movies
   wishlist = this.wishlistService.wishlist;
+
+  // Remove a single movie from wishlist
   removeMovie(movie: MovieResults) {
     this.wishlistService.remove(movie);
   }
 
+  // Clear all movies from wishlist
   clearWishlist() {
     this.wishlistService.clear();
   }

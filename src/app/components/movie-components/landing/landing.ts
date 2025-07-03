@@ -13,16 +13,18 @@ import { SearchService } from '../../../services/services-movie/search-service';
   styleUrl: './landing.scss',
 })
 export class Landing {
+  // Movie service for now playing movies and loading/error state
   private movieService = inject(MovieService);
   nowPlaying = this.movieService.nowPlaying;
   isLoading = this.movieService.isLoading;
   error = this.movieService.error;
-  //Search logic
-  searchService = inject(SearchService);
 
-  movieName: string = ''; // Define and initialize movieName
+  // Search logic
+  searchService = inject(SearchService);
+  movieName: string = ''; // Holds the search input
 
   constructor() {
+    // Reactively search movies when movieName changes
     effect(() => {
       this.searchService.searchMovies(this.movieName);
     });

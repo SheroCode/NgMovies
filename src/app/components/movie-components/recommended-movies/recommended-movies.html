@@ -1,6 +1,7 @@
 <section class="recommended container py-5">
   <h3 class="mb-4">Recommended Movies</h3>
 
+  <!-- Show loading, error, empty, or recommended movies -->
   @if (isLoading()) {
     <p class="text-warning">Loading recommendations...</p>
   } @else if (error()) {
@@ -9,6 +10,7 @@
     <p class="text-muted">No recommendations available.</p>
   } @else {
     <div class="row gx-4 gy-5 justify-content-center">
+      <!-- Render each recommended movie card -->
       @for (movie of recommended(); track movie.id) {
         <div class="col-6 col-md-4 col-lg-3">
           <app-movie-card [movie]="movie" />

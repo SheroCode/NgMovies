@@ -21,6 +21,7 @@ export class TvPagination {
   constructor() {
     effect(() => {
       this.tvshowService.loadPopular();
+      
     });
   }
 }

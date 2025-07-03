@@ -9,7 +9,7 @@ export interface MovieResults {
   overview: string;
   popularity: number;
   poster_path: string;
-  release_date: string; // ISO format string (e.g., "2025-05-14")
+  release_date: string; 
   title: string;
   video: boolean;
   vote_average: number;
