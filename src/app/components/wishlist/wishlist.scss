@@ -2,12 +2,13 @@
 
 // Container spacing
 .container {
-  margin-top: 5rem;
+  margin-top: 6rem;
+  .poster-image {
+    max-height: 20rem;
+  }
+
 }
-// Heading spacing
-h2 {
-  margin-top: 5rem;
-}
+
 // Empty wishlist message styling
 .heartbreak {
   margin: 5rem;

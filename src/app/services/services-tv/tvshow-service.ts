@@ -1,7 +1,7 @@
 import { Injectable, inject, signal, effect } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
-import { TvResponse, TvShowResults } from '../../interfaces/tvInterfaces';
+import { TvResponse, TvShow } from '../../interfaces/tvInterfaces';
 
 
 @Injectable({
@@ -18,7 +18,7 @@ export class TvshowService {
     Authorization: `Bearer ${this.TOKEN}`,
   });
 
-  popular = signal<TvShowResults[]>([]);
+  popular = signal<TvShow[]>([]);
   isLoading = signal(false);
   currentPage = signal<number>(1);
   error = signal<string | null>(null);

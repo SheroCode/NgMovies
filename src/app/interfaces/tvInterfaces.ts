@@ -1,29 +1,10 @@
 // TV shows API response
 export interface TvResponse {
   page: number;
-  results: TvShowResults[];
+  results: TvShow[];
 }
-
-// TV show summary info
-export interface TvShowResults {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  origin_country: string[];
-  original_language: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  first_air_date: string;
-  name: string;
-  vote_average: number;
-  vote_count: number;
-}
-
-// TV show details
-export interface TvDetailsFace {
+// TV show
+export interface TvShow {
   adult: boolean;
   backdrop_path: string | null;
   created_by: CreatedBy[];
@@ -48,6 +29,9 @@ export interface TvDetailsFace {
   popularity: number;
   poster_path: string | null;
   production_companies: ProductionCompany[];
+  vote_average?: number;
+  vote_count?: number;
+  genre_ids?: number[];
 }
 
 // Created by info for TV show

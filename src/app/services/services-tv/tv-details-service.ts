@@ -1,6 +1,6 @@
-import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TvDetailsFace } from '../../interfaces/tvInterfaces';
+import { Injectable, inject, signal } from '@angular/core';
+import { TvShow } from '../../interfaces/tvInterfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class TvDetailsService {
   });
 
   // Movie Details Signals
-  tvDetails = signal<TvDetailsFace | null>(null);
+  tvDetails = signal<TvShow | null>(null);
   isLoading = signal(false);
   error = signal<string | null>(null);
  
@@ -26,7 +26,7 @@ export class TvDetailsService {
     this.error.set(null);
     this.tvDetails.set(null);
     this.http
-      .get<TvDetailsFace>(`${this.BASE_URL}/tv/${id}`, {
+      .get<TvShow>(`${this.BASE_URL}/tv/${id}`, {
         headers: this.headers,
       })
       .subscribe({

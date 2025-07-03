@@ -12,10 +12,10 @@
   @for(movie of wishlist();track movie.id){
   <div class="card mb-5 border-0 shadow-lg py-4 rounded-5">
     <div class="row align-items-center">
-      <div class="col-lg-3 col-md-6 mx-auto text-center">
+      <div class="col-lg-4 col-md-6 mx-auto text-center">
         <img
           [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path"
-          class="img-fluid rounded-5"
+          class="img-fluid rounded-5 poster-image"
           alt="{{ movie.title }}"
           style="object-fit: cover; height: 45vh"
         />
@@ -29,7 +29,7 @@
         <p class="text-muted mt-3">{{movie.overview.slice(0,130)}}...</p>
       </div>
 
-      <div class="col-lg-2">
+      <div class="col-lg-3">
         <!-- Remove single movie button -->
         <button class="bin-button mx-auto" (click)="removeMovie(movie)">
           <svg

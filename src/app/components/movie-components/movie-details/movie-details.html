@@ -17,7 +17,7 @@
       >
         <h2 class="fw-bold">{{ movie()?.title }}</h2>
         <div
-          class="btn btn-outline-warning "
+          class="btn btn-outline-warning"
           (click)="toggleWishlist($event,movie()!)"
         >
           <i
@@ -56,7 +56,7 @@
         <img
           [src]="'https://image.tmdb.org/t/p/w200' + company.logo_path"
           [alt]="company.name"
-          style="height: 40px; max-width: 150px"
+          style="height: 30px; max-width: 120px"
           class="img-fluid"
         />
         } }
@@ -75,24 +75,27 @@
     </div>
   </div>
 
-  <!-- Reviews section -->
+  <!------------------- Reviews section --------------------->
   <div class="reviews pt-5">
     <h3 class="mb-4">Reviews</h3>
     @if(reviews().length==0){
-    <div>No Reviews to show</div>
+    <div>No Reviews Found.</div>
     }@else{
     <div ngbAccordion [closeOthers]="true">
       <!-- List reviews in accordion -->
       @for(review of reviews();track review.id){
       <div ngbAccordionItem>
         <h2 ngbAccordionHeader>
-          <button ngbAccordionButton>
-            {{ review.author_details.name ||review.author_details.username}}
+          <button ngbAccordionButton class="d-flex align-items-center gap-2">
+            <p class="reviewer-name fw-semibold mb-0 text-warning">
+              {{ review.author_details.name ||review.author_details.username}}
+            </p>
+            <span class="text-muted">{{review.created_at.slice(0,10)}}</span>
           </button>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
-            <span
+            <span class="review-rating"
               ><strong>Rating:</strong> {{ review.author_details.rating ?? 'N/A'
               }}</span
             >

@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TvShowResults } from '../../../interfaces/tvInterfaces';
+import { TvShow } from '../../../interfaces/tvInterfaces';
 import { CircularProgress } from '../../circular-progress/circular-progress';
 
 @Component({
@@ -11,7 +11,7 @@ import { CircularProgress } from '../../circular-progress/circular-progress';
 })
 export class TvCard {
   // TV show input property
-  tvShow = input<TvShowResults>();
+  tvShow = input<TvShow>();
   // Compute image URL for the TV show poster
   imageUrl = computed(
     () =>

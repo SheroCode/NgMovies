@@ -1,5 +1,15 @@
-.pagination{
-    display: block;
-    text-align: center;
-    margin: auto;
+::ng-deep ngb-pagination {
+  // Container
+  .pagination {
+    --bs-pagination-color: #ffe353; 
+    --bs-pagination-hover-color: #fff;
+    --bs-pagination-bg: transparent;
+    --bs-pagination-hover-bg: #ffc107;
+    --bs-pagination-active-bg: #ffe353;
+    --bs-pagination-active-color: #3e3c3c;
+    --bs-pagination-border-color: #ffc107;
+    --bs-pagination-hover-border-color: #e0a800;
+    --bs-pagination-focus-box-shadow: none;
+    gap: 0.5rem;
+  }
 }

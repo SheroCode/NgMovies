@@ -3,44 +3,62 @@
 } @else { @if (tvShow()) {
 <div class="container py-5">
   <div class="row g-4 align-items-center shadow rounded-5 p-3">
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <img
         [src]="'https://image.tmdb.org/t/p/w500' + tvShow()?.poster_path"
         [alt]="tvShow()?.name"
-        class="img-fluid rounded-3 shadow"
+        class="img-fluid rounded-3 shadow poster-image"
       />
     </div>
     <div class="col-md-8">
       <h2 class="fw-bold">{{ tvShow()?.name }}</h2>
       <p class="text-muted">{{ tvShow()?.first_air_date }}</p>
-  <ngbd-rating-decimal
+      <!-- Show TV show rating -->
+      <ngbd-rating-decimal
         [rating]="(tvShow()?.last_episode_to_air?.vote_average || 0) / 2"
       ></ngbd-rating-decimal>
       <p>{{ tvShow()?.overview }}</p>
       <div class="d-flex flex-wrap">
+        <!-- List genres -->
         @for(genre of tvShow()?.genres;track genre.id){
         <span class="fw-semibold me-2 mb-2">{{genre.name}}</span>
         }
+        <div class="my-3 d-flex flex-wrap gap-3">
+          <!-- Show production company logos -->
+        </div>
       </div>
       <div class="d-flex mt-4">
         <p class="">
-          <strong>Number Of Episodes  :</strong> {{ tvShow()?.number_of_episodes }} 
+          <strong>Number Of Episodes :</strong> {{ tvShow()?.number_of_episodes
+          }}
         </p>
         <p class="ms-5">
           <strong>Number Of Seasons :</strong> {{ tvShow()?.number_of_seasons}}
         </p>
       </div>
       <div class="my-3 d-flex flex-wrap gap-3">
+        <!-- Show production company logos -->
         @for (company of tvShow()?.production_companies; track company.id) { @if
         (company.logo_path) {
         <img
           [src]="'https://image.tmdb.org/t/p/w200' + company.logo_path"
           [alt]="company.name"
-          style="height: 40px; max-width: 200px"
+          style="max-height: 30px; max-width: 120px"
           class="img-fluid"
         />
         } }
       </div>
+      <!-- website link -->
+      @if(tvShow()?.homepage){
+      <div class="">
+        <a
+          class="btn btn-outline-warning border-2 fw-semibold"
+          target="_blank"
+          [href]="tvShow()?.homepage"
+          ><i class="bi bi-link-45deg fs-5 fw-bold"></i> Website</a
+        >
+      </div>
+      }
     </div>
   </div>
 </div>
