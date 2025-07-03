@@ -1,7 +1,9 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { Movie } from '../../../interfaces/interfaces';
 import { DetailsService } from '../../../services/services-movie/details-service';
+import { WishlistService } from '../../../services/wishlist-service';
 import { NgbdRatingDecimal } from '../../rating-decimal/rating-decimal';
 import { RecommendedMovies } from '../recommended-movies/recommended-movies';
 
@@ -21,7 +23,18 @@ export class MovieDetails {
   movie = this.detailsService.movieDetails;
   isLoading = this.detailsService.isLoading;
   error = this.detailsService.error;
+  // Access wishlist service
+  wishlistService = inject(WishlistService);
 
+  // Toggle movie in wishlist, prevent event bubbling
+  toggleWishlist(event: Event, movie: Movie) {
+    event.stopPropagation();
+    this.wishlistService.toggle(movie);
+  }
+  // Check if movie is in wishlist
+  isInWishlist(movie: Movie) {
+    return this.wishlistService.isIn(movie);
+  }
   // Reviews and their loading/error states
   reviews = this.detailsService.reviews;
   isLoadingReviews = this.detailsService.isLoadingReviews;

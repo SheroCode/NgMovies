@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map } from 'rxjs';
-import { MovieResults } from '../../interfaces/interfaces';
+import { Movie } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class SearchService {
   });
 
   // Signals for search results and loading/error state
-  searchResults = signal<MovieResults[]>([]);
+  searchResults = signal<Movie[]>([]);
   isLoadingSearch = signal(false);
   searchError = signal<string | null>(null);
 
@@ -26,7 +26,7 @@ export class SearchService {
     this.isLoadingSearch.set(true);
     this.searchError.set(null);
     this.http
-      .get<{ results: MovieResults[] }>(
+      .get<{ results: Movie[] }>(
         `${this.BASE_URL}/search/movie?include_adult=false&query=${movieName}`,
         {
           headers: this.headers,

@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map } from 'rxjs';
-import { MovieResults, NowPlayingResponse } from '../../interfaces/interfaces';
+import { Movie, NowPlayingResponse } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class MovieService {
   });
 
   // Signals for movie data and UI state
-  nowPlaying = signal<MovieResults[]>([]);
+  nowPlaying = signal<Movie[]>([]);
   isLoading = signal(false);
   currentPage = signal<number>(1);
   error = signal<string | null>(null);

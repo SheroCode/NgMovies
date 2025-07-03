@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MovieDetailsFace, ReviewFace } from '../../interfaces/interfaces';
+import { Movie, ReviewFace } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class DetailsService {
   });
 
   // Movie Details Signals
-  movieDetails = signal<MovieDetailsFace | null>(null);
+  movieDetails = signal<Movie | null>(null);
   isLoading = signal(false);
   error = signal<string | null>(null);
   // Reviews Signals
@@ -30,7 +30,7 @@ export class DetailsService {
     this.error.set(null);
     this.movieDetails.set(null);
     this.http
-      .get<MovieDetailsFace>(`${this.BASE_URL}/movie/${id}`, {
+      .get<Movie>(`${this.BASE_URL}/movie/${id}`, {
         headers: this.headers,
       })
       .subscribe({

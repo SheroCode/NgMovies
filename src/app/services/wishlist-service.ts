@@ -1,17 +1,17 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { MovieResults } from '../interfaces/interfaces';
+import { Movie } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WishlistService {
   // Holds the current wishlist as a signal
-  wishlist = signal<MovieResults[]>([]);
+  wishlist = signal<Movie[]>([]);
   // Number of movies in wishlist
   counter = computed(() => this.wishlist().length);
 
   // Add or remove a movie from wishlist
-  toggle(movie: MovieResults) {
+  toggle(movie: Movie) {
     const exist = this.wishlist().some((m) => m.id === movie.id);
     if (exist) {
       // Remove if already exists
@@ -25,12 +25,12 @@ export class WishlistService {
   }
 
   // Check if movie is in wishlist
-  isIn(movie: MovieResults) {
+  isIn(movie: Movie) {
     return this.wishlist().some((m) => m.id === movie.id);
   }
 
   // Remove a movie from wishlist
-  remove(movie: MovieResults) {
+  remove(movie: Movie) {
     this.wishlist.update((current) => current.filter((m) => m.id !== movie.id));
   }
 

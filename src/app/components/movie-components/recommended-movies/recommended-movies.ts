@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { MovieCard } from '../movie-card/movie-card';
-import { MovieResults } from '../../../interfaces/interfaces';
+import { Movie } from '../../../interfaces/interfaces';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecommendedService } from '../../../services/services-movie/recommended-service';
 
@@ -13,6 +13,7 @@ import { RecommendedService } from '../../../services/services-movie/recommended
 export class RecommendedMovies {
   private service = inject(RecommendedService);
 
+
   // Movie ID input for fetching recommendations
   movieId = input<number>();
 
@@ -24,7 +25,7 @@ export class RecommendedMovies {
   // Chunk recommended movies into groups of 3 for carousel slides
   chunkedRecommended = computed(() => {
     const items = this.recommended();
-    const chunks: MovieResults[][] = [];
+    const chunks: Movie[][] = [];
     for (let i = 0; i < items.length; i += 3) {
       chunks.push(items.slice(i, i + 3));
     }

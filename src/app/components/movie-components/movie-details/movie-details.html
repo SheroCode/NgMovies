@@ -12,7 +12,22 @@
       />
     </div>
     <div class="col-md-8">
-      <h2 class="fw-bold">{{ movie()?.title }}</h2>
+      <div
+        class="movie-title d-flex justify-content-between align-items-center"
+      >
+        <h2 class="fw-bold">{{ movie()?.title }}</h2>
+        <div
+          class="btn btn-outline-warning "
+          (click)="toggleWishlist($event,movie()!)"
+        >
+          <i
+            class="bi fs-5"
+            [class.bi-suit-heart-fill]="isInWishlist(movie()!)"
+            [class.bi-suit-heart]="!isInWishlist(movie()!)"
+            style="cursor: pointer"
+          ></i>
+        </div>
+      </div>
       <p class="text-muted">{{ movie()?.release_date }}</p>
       <!-- Show movie rating -->
       <ngbd-rating-decimal
@@ -50,7 +65,7 @@
       @if(movie()?.homepage){
       <div class="">
         <a
-          class="btn btn-outline-warning border-2 fw-semibold "
+          class="btn btn-outline-warning border-2 fw-semibold"
           target="_blank"
           [href]="movie()?.homepage"
           ><i class="bi bi-link-45deg fs-5 fw-bold"></i> Website</a

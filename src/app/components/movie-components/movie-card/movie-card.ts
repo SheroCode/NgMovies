@@ -1,5 +1,5 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { MovieResults } from '../../../interfaces/interfaces';
+import { Movie } from '../../../interfaces/interfaces';
 import { WishlistService } from '../../../services/wishlist-service';
 import { CircularProgress } from '../../circular-progress/circular-progress';
 import { RouterModule } from '@angular/router';
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 })
 export class MovieCard {
   // Movie input property
-  movie = input<MovieResults>();
+  movie = input<Movie>();
   // Compute image URL for the movie poster
   imageUrl = computed(
     () =>
@@ -23,12 +23,12 @@ export class MovieCard {
   wishlistService = inject(WishlistService);
 
   // Toggle movie in wishlist, prevent event bubbling
-  toggleWishlist(event: Event, movie: MovieResults) {
+  toggleWishlist(event: Event, movie: Movie) {
     event.stopPropagation();
     this.wishlistService.toggle(movie);
   }
   // Check if movie is in wishlist
-  isInWishlist(movie: MovieResults) {
+  isInWishlist(movie: Movie) {
     return this.wishlistService.isIn(movie);
   }
 }

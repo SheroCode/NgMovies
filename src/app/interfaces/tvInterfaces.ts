@@ -1,7 +1,10 @@
+// TV shows API response
 export interface TvResponse {
   page: number;
   results: TvShowResults[];
 }
+
+// TV show summary info
 export interface TvShowResults {
   adult: boolean;
   backdrop_path: string | null;
@@ -19,8 +22,7 @@ export interface TvShowResults {
   vote_count: number;
 }
 
-
-// TV SHOWS DETAILS
+// TV show details
 export interface TvDetailsFace {
   adult: boolean;
   backdrop_path: string | null;
@@ -35,7 +37,7 @@ export interface TvDetailsFace {
   last_air_date: string;
   last_episode_to_air: LastEpisodeToAir;
   name: string;
-  next_episode_to_air: any; 
+  next_episode_to_air: any;
   networks: Network[];
   number_of_episodes: number;
   number_of_seasons: number;
@@ -48,6 +50,7 @@ export interface TvDetailsFace {
   production_companies: ProductionCompany[];
 }
 
+// Created by info for TV show
 export interface CreatedBy {
   id: number;
   credit_id: string;
@@ -57,11 +60,13 @@ export interface CreatedBy {
   profile_path: string | null;
 }
 
+// Genre info for TV show
 export interface Genre {
   id: number;
   name: string;
 }
 
+// Last episode info for TV show
 export interface LastEpisodeToAir {
   id: number;
   name: string;
@@ -78,6 +83,7 @@ export interface LastEpisodeToAir {
   still_path: string | null;
 }
 
+// Network info for TV show
 export interface Network {
   id: number;
   logo_path: string | null;
@@ -85,6 +91,7 @@ export interface Network {
   origin_country: string;
 }
 
+// Production company info for TV show
 export interface ProductionCompany {
   id: number;
   logo_path: string | null;

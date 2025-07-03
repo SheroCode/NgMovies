@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { WishlistService } from '../../services/wishlist-service';
 import { RouterModule } from '@angular/router';
-import { MovieResults } from '../../interfaces/interfaces';
+import { Movie } from '../../interfaces/interfaces';
 import { NgbdRatingDecimal } from '../rating-decimal/rating-decimal';
 
 @Component({
@@ -17,7 +17,7 @@ export class Wishlist {
   wishlist = this.wishlistService.wishlist;
 
   // Remove a single movie from wishlist
-  removeMovie(movie: MovieResults) {
+  removeMovie(movie: Movie) {
     this.wishlistService.remove(movie);
   }
 
