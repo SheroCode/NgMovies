@@ -1,0 +1,20 @@
+@use "../../../../styles.scss" as *;
+.bi-suit-heart-fill {
+  color: $main;
+}
+
+.movie__image {
+  position: relative;
+  app-circular-progress {
+    position: absolute;
+    top: 90%;
+    left: -3%;
+  }
+}
+@media (max-width:720px) {
+  .card-body {
+    h6{font-size: 1.5rem;}
+    p{font-size: .75rem;}
+
+  }
+}

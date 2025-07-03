@@ -1,0 +1,33 @@
+<div class="popular-tvshows">
+  <div class="container">
+    <h2 class="my-5">TV Shows</h2>
+
+    <!-- loading spinner -->
+    @if(isLoading()){
+    <div class="dot-spinner mx-auto">
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+      <div class="dot-spinner__dot"></div>
+    </div>
+    <!-- Error message -->
+    }@else if (error()) {
+    <p class="text-danger">{{ error() }}</p>
+    <!-- Display tvShows -->
+    }@else {
+    <div class="row g-4">
+      @for(tvShow of popular(); track tvShow.id) {
+      <div class="col-8 col-lg-3 col-md-4 col-sm-6 mx-auto">
+        <app-tv-card [tvShow]="tvShow"></app-tv-card>
+      </div>
+      }
+    </div>
+    }
+    <!-- pagination -->
+    <app-tv-pagination></app-tv-pagination>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { RecommendedService } from '../../services/recommended-service';
 import { MovieCard } from '../movie-card/movie-card';
-import { MovieResults } from '../../interfaces/interfaces';
+import { MovieResults } from '../../../interfaces/interfaces';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecommendedService } from '../../../services/services-movie/recommended-service';
 
 @Component({
   selector: 'app-recommended-movies',
-  imports: [MovieCard,NgbCarouselModule],
+  imports: [MovieCard, NgbCarouselModule],
   templateUrl: './recommended-movies.html',
   styleUrl: './recommended-movies.scss',
 })

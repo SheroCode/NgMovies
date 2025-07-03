@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MovieResults } from '../interfaces/interfaces';
+import { MovieResults } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,7 @@ export class RecommendedService {
 
     this.http
       .get<{ results: MovieResults[] }>(
-        `${this.BASE_URL}/movie/${movieId}/recommendations`,
+        `${this.BASE_URL}/movie/${movieId}/recommendations?include_adult=false`,
         { headers: this.headers }
       )
       .subscribe({

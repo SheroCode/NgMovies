@@ -1,9 +1,9 @@
-@use "../../../styles.scss" as *;
+@use "../../../../styles.scss" as *;
 .landing {
   .landing__content {
     position: relative;
     overflow: hidden;
-    background-image: url("../../../assets/landingimg.webp");
+    background-image: url("../../../../assets/landingimg.webp");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;

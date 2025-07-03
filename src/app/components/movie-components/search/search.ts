@@ -1,8 +1,8 @@
 import { Component, inject, signal, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchService } from '../../services/search-service';
 import { MovieCard } from '../movie-card/movie-card';
+import { SearchService } from '../../../services/services-movie/search-service';
 
 @Component({
   selector: 'app-search',
@@ -24,7 +24,6 @@ export class Search {
   hasSearched = signal(false);
 
   constructor() {
-    
     effect(() => {
       this.route.paramMap.subscribe((params) => {
         const query = params.get('query');
@@ -40,7 +39,6 @@ export class Search {
   onSearch() {
     const query = this.movieName.trim();
     if (query) {
-      
       this.router.navigate(['/search', query]);
     }
   }

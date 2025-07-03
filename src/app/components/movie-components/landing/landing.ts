@@ -1,14 +1,14 @@
 import { Component, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MovieService } from '../../services/movie-service';
-import { SearchService } from '../../services/search-service';
+import { MovieService } from '../../../services/services-movie/movie-service';
 import { MovieCard } from '../movie-card/movie-card';
 import { Pagination } from '../pagination/pagination';
+import { SearchService } from '../../../services/services-movie/search-service';
 
 @Component({
   selector: 'app-landing',
-  imports: [MovieCard, Pagination, RouterModule,FormsModule],
+  imports: [MovieCard, Pagination, RouterModule, FormsModule],
   templateUrl: './landing.html',
   styleUrl: './landing.scss',
 })

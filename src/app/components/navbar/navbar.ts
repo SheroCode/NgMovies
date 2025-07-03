@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { WishlistService } from '../../services/wishlist-service';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { MovieService } from '../../services/movie-service';
+import { MovieService } from '../../services/services-movie/movie-service';
 
 @Component({
   selector: 'app-navbar',

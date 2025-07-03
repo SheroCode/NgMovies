@@ -1,9 +1,9 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DetailsService } from '../../services/details-service';
-import { NgbdRatingDecimal } from '../rating-decimal/rating-decimal';
+import { NgbdRatingDecimal } from '../../rating-decimal/rating-decimal';
 import { RecommendedMovies } from '../recommended-movies/recommended-movies';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { DetailsService } from '../../../services/services-movie/details-service';
 
 @Component({
   selector: 'app-movie-details',

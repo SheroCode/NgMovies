@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MovieDetailsFace, ReviewFace } from '../interfaces/interfaces';
+import { MovieDetailsFace, ReviewFace } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
