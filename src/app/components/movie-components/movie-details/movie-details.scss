@@ -1,5 +1,6 @@
 @use "../../../../styles.scss" as *;
-
+.movie-details{
+  margin-top: 5rem;
 .review-rating{
   background-color: $main;
   padding: 5px 8px;
@@ -11,5 +12,6 @@
 .movie-title{
 .btn-outline-warning{
  color:  $main !important;
+}
 }
 }

@@ -1,118 +1,117 @@
-@if (isLoading()) {
-<p class="text-center text-warning py-5">Loading movie details...</p>
-} @else { @if (movie()) {
-<div class="container py-5">
-  <div class="row g-4 align-items-center shadow rounded-5 p-3 pt-0">
-    <!-- poster image -->
-    <div class="col-md-4 text-center">
-      <img
-        [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path"
-        [alt]="movie()?.title"
-        class="img-fluid rounded-3 shadow poster-image"
-      />
-    </div>
-    <div class="col-md-8">
-      <div
-        class="movie-title d-flex justify-content-between align-items-center"
-      >
-        <h2 class="fw-bold">{{ movie()?.title }}</h2>
-        <div
-          class="btn btn-outline-warning"
-          (click)="toggleWishlist($event,movie()!)"
-        >
-          <i
-            class="bi fs-5"
-            [class.bi-suit-heart-fill]="isInWishlist(movie()!)"
-            [class.bi-suit-heart]="!isInWishlist(movie()!)"
-            style="cursor: pointer"
-          ></i>
-        </div>
-      </div>
-      <p class="text-muted">{{ movie()?.release_date }}</p>
-      <!-- Show movie rating -->
-      <ngbd-rating-decimal
-        [rating]="(movie()?.vote_average ?? 0) / 2"
-      ></ngbd-rating-decimal>
-      <p>{{ movie()?.overview }}</p>
-      <div class="d-flex flex-wrap">
-        <!-- List genres -->
-        @for(genre of movie()?.genres;track genre.id){
-        <span class="fw-semibold me-2 mb-2">{{genre.name}}</span>
-        }
-      </div>
-      <div class="d-flex mt-3">
-        <p class="">
-          <strong>Duration :</strong> {{ movie()?.runtime }} minutes
-        </p>
-        <p class="ms-5">
-          <strong>Languages :</strong> {{
-          movie()?.spoken_languages?.[0]?.english_name }}
-        </p>
-      </div>
-      <div class="my-3 d-flex flex-wrap gap-3">
-        <!-- Show production company logos -->
-        @for (company of movie()?.production_companies; track company.id) { @if
-        (company.logo_path) {
+<div class="movie-details">
+  @if (isLoading()) {
+  <p class="text-center text-warning py-5">Loading movie details...</p>
+  } @else { @if (movie()) {
+  <div class="container py-5">
+    <div class="row g-4 align-items-center shadow rounded-5 p-3 pt-0">
+      <!-- poster image -->
+      <div class="col-md-4 text-center">
         <img
-          [src]="'https://image.tmdb.org/t/p/w200' + company.logo_path"
-          [alt]="company.name"
-          style="height: 30px; max-width: 120px"
-          class="img-fluid"
+          [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path"
+          [alt]="movie()?.title"
+          class="img-fluid rounded-3 shadow poster-image"
         />
-        } }
       </div>
-      <!-- website link -->
-      @if(movie()?.homepage){
-      <div class="">
-        <a
-          class="btn btn-outline-warning border-2 fw-semibold"
-          target="_blank"
-          [href]="movie()?.homepage"
-          ><i class="bi bi-link-45deg fs-5 fw-bold"></i> Website</a
+      <div class="col-md-8">
+        <div
+          class="movie-title d-flex justify-content-between align-items-center"
         >
-      </div>
-      }
-    </div>
-  </div>
-
-  <!------------------- Reviews section --------------------->
-  <div class="reviews pt-5">
-    <h3 class="mb-4">Reviews</h3>
-    @if(reviews().length==0){
-    <div>No Reviews Found.</div>
-    }@else{
-    <div ngbAccordion [closeOthers]="true">
-      <!-- List reviews in accordion -->
-      @for(review of reviews();track review.id){
-      <div ngbAccordionItem>
-        <h2 ngbAccordionHeader>
-          <button ngbAccordionButton class="d-flex align-items-center gap-2">
-            <p class="reviewer-name fw-semibold mb-0 text-warning">
-              {{ review.author_details.name ||review.author_details.username}}
-            </p>
-            <span class="text-muted">{{review.created_at.slice(0,10)}}</span>
-          </button>
-        </h2>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <span class="review-rating"
-              ><strong>Rating:</strong> {{ review.author_details.rating ?? 'N/A'
-              }}</span
-            >
-            <p class="mt-3">{{ review.content.slice(0, 500) }}...</p>
+          <h2 class="fw-bold">{{ movie()?.title }}</h2>
+          <div
+            class="btn btn-outline-warning"
+            (click)="toggleWishlist($event,movie()!)"
+          >
+            <i
+              class="bi fs-5"
+              [class.bi-suit-heart-fill]="isInWishlist(movie()!)"
+              [class.bi-suit-heart]="!isInWishlist(movie()!)"
+              style="cursor: pointer"
+            ></i>
           </div>
         </div>
+        <p class="text-muted">{{ movie()?.release_date }}</p>
+        <!-- Show movie rating -->
+        <ngbd-rating-decimal
+          [rating]="(movie()?.vote_average ?? 0) / 2"
+        ></ngbd-rating-decimal>
+        <p>{{ movie()?.overview }}</p>
+        <div class="d-flex flex-wrap">
+          <!-- List genres -->
+          @for(genre of movie()?.genres;track genre.id){
+          <span class="fw-semibold me-2 mb-2">{{genre.name}}</span>
+          }
+        </div>
+        <div class="d-flex mt-3">
+          <p class="">
+            <strong>Duration :</strong> {{ movie()?.runtime }} minutes
+          </p>
+          <p class="ms-5">
+            <strong>Languages :</strong> {{
+            movie()?.spoken_languages?.[0]?.english_name }}
+          </p>
+        </div>
+        <div class="my-3 d-flex flex-wrap gap-3">
+          <!-- Show production company logos -->
+          @for (company of movie()?.production_companies; track company.id) {
+          @if (company.logo_path) {
+          <img
+            [src]="'https://image.tmdb.org/t/p/w200' + company.logo_path"
+            [alt]="company.name"
+            style="height: 30px; max-width: 120px"
+            class="img-fluid"
+          />
+          } }
+        </div>
+        <!-- website link -->
+        @if(movie()?.homepage){
+        <div class="">
+          <a
+            class="btn btn-outline-warning border-2 fw-semibold"
+            target="_blank"
+            [href]="movie()?.homepage"
+            ><i class="bi bi-link-45deg fs-5 fw-bold"></i> Website</a
+          >
+        </div>
+        }
+      </div>
+    </div>
+    <!------------------- Reviews section --------------------->
+    <div class="reviews pt-5">
+      <h3 class="mb-4">Reviews</h3>
+      @if(reviews().length==0){
+      <div>No Reviews Found.</div>
+      }@else{
+      <div ngbAccordion [closeOthers]="true">
+        <!-- List reviews in accordion -->
+        @for(review of reviews();track review.id){
+        <div ngbAccordionItem>
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton class="d-flex align-items-center gap-2">
+              <p class="reviewer-name fw-semibold mb-0 text-warning">
+                {{ review.author_details.name ||review.author_details.username}}
+              </p>
+              <span class="text-muted">{{review.created_at.slice(0,10)}}</span>
+            </button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <span class="review-rating"
+                ><strong>Rating:</strong> {{ review.author_details.rating ??
+                'N/A' }}</span
+              >
+              <p class="mt-3">{{ review.content.slice(0, 500) }}...</p>
+            </div>
+          </div>
+        </div>
+        }
       </div>
       }
     </div>
-    }
   </div>
+  } @else {
+  <p class="text-center text-danger py-5">{{ error() }}</p>
+  } }
+  <!-- recommended movies -->
+  <hr />
+  <app-recommended-movies [movieId]="movie()?.id" />
 </div>
-} @else {
-<p class="text-center text-danger py-5">{{ error() }}</p>
-} }
-
-<!-- recommended movies -->
-<hr />
-
-<app-recommended-movies [movieId]="movie()?.id" />
